@@ -118,3 +118,12 @@ Create an Object Collection in the Console Applicaiton Targeted to .NET 5. THis 
 	- If the Employee is from 'Sales' Department then the Additional Travel Allowance of 25% of salary must be added in it and calculate the total Salary 
 	- Print all EMployees with their DepartmentNames with Salary and Tax
 
+Day 3: 21-July-2021
+Complete the Client Application CS_EF_DbFirst with FOllowing Modifications
+	1. Create a Service class for Product to complete CRUD operations on Product Table
+	2. Create a new class called 'Client', this class will have followign methods
+		- CreateCategoryProduct(<INPUT-OBJECT-WITH-ONE-TO-MANY-RELATIOSHIPS>)
+			- This method will create a category and multiple Products for teh category based on one-to-many relationship across Category-Product table. (Hint: Use AddRange() for adding multiple records) 
+		- ProductByCatName(string subCatName)
+			- THis method will return a List of Products based on SubCategoryName as
+				- ProductRowId, ProductId, ProductName SubCategoryName(Only 4 columns ) (Hint:Tuple)

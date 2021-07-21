@@ -16,9 +16,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS_Discards", "CS_Discards\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS_Deconstructions", "CS_Deconstructions\CS_Deconstructions.csproj", "{7698028E-0E09-4E60-9408-23FEBD3AEA53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS_Tuples", "CS_Tuples\CS_Tuples.csproj", "{923322C6-DDBD-4331-B4CA-C4C9DB242E91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS_Tuples", "CS_Tuples\CS_Tuples.csproj", "{923322C6-DDBD-4331-B4CA-C4C9DB242E91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS_Patterns", "CS_Patterns\CS_Patterns.csproj", "{AB0748D0-79D1-46B1-9BC0-B938923F83CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS_Patterns", "CS_Patterns\CS_Patterns.csproj", "{AB0748D0-79D1-46B1-9BC0-B938923F83CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS_EF_DbFirst", "CS_EF_DbFirst\CS_EF_DbFirst.csproj", "{FFD1ED6C-592B-488D-B637-CBF9D3CED384}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -50,6 +52,10 @@ Global
 		{AB0748D0-79D1-46B1-9BC0-B938923F83CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB0748D0-79D1-46B1-9BC0-B938923F83CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB0748D0-79D1-46B1-9BC0-B938923F83CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFD1ED6C-592B-488D-B637-CBF9D3CED384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFD1ED6C-592B-488D-B637-CBF9D3CED384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFD1ED6C-592B-488D-B637-CBF9D3CED384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFD1ED6C-592B-488D-B637-CBF9D3CED384}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
