@@ -127,3 +127,7 @@ Complete the Client Application CS_EF_DbFirst with FOllowing Modifications
 		- ProductByCatName(string subCatName)
 			- THis method will return a List of Products based on SubCategoryName as
 				- ProductRowId, ProductId, ProductName SubCategoryName(Only 4 columns ) (Hint:Tuple)
+Day 4: 22-july-2021
+
+1. Create a StoreProcedure for Inserting Employee information in Employee table. THis Stored Procedure will have all columns of Employee Table as input parameters. Perform the Insert operations using EF Core Database First Approach. The Stored Procedure will retuen the Count of the Number of records in EMployee Table based on the DeptNo.
+2. Take an experience of Code-First Approach with Many-to-Many relations acros tables as per the classes of your choice.
