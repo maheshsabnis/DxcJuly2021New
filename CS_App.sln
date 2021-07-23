@@ -24,7 +24,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS_EF_DbFirst", "CS_EF_DbFi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS_EF_NetFrwk", "CS_EF_NetFrwk\CS_EF_NetFrwk.csproj", "{A27A6214-7A85-43D3-9160-CB9F3AE7112E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS_EF_Code_First", "CS_EF_Code_First\CS_EF_Code_First.csproj", "{0938E1A5-F496-4B65-B4A1-8A91D91D12C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS_EF_Code_First", "CS_EF_Code_First\CS_EF_Code_First.csproj", "{0938E1A5-F496-4B65-B4A1-8A91D91D12C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core_MVC", "Core_MVC\Core_MVC.csproj", "{FA40725B-FC2E-44F0-8F29-DB26A59AA608}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +70,10 @@ Global
 		{0938E1A5-F496-4B65-B4A1-8A91D91D12C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0938E1A5-F496-4B65-B4A1-8A91D91D12C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0938E1A5-F496-4B65-B4A1-8A91D91D12C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA40725B-FC2E-44F0-8F29-DB26A59AA608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA40725B-FC2E-44F0-8F29-DB26A59AA608}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA40725B-FC2E-44F0-8F29-DB26A59AA608}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA40725B-FC2E-44F0-8F29-DB26A59AA608}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -97,6 +97,77 @@ Learning .NET 5
 			- vaeify the type by internally accessing the typeof() operator and GetType()method to eveluate the pattern
 		- SwichCase Pattern Matching
 			- Work on Bulk of input data and process it based on Characteristics of it
+# ASP.NET Core (MVC) 5 Project Strcture
+- Folders
+	- Controllers
+		- MVC and API Controllers
+	- View
+		- Contains MVC Views
+	- Data
+		- DbContext class and Default Migrations classe for ASP.NET Core Identity.
+		- THis will be uesed to CReate ASP.NET Core Identity Database and Tables
+	- Models
+		- Applicaton Widw models 
+		- The ErrorViewModel class, the custom class for Exception Management
+	- Areas
+		- Folder that contains the default Identity Razor Pages
+		- The Razor View Library (a dll file taht contains Razor Views used for Identity Management)
+	- wwwroot 
+		- Conatains 'Client-Side' files e.g. Bootstrap, jQuery and any other JS, CSS and Image files to be rendereds (aka loaded) in browser with response for Views
+- Files
+	- appsettings.json (Say bye to Web.Config)
+		- Application Level Setings
+			- e.g. ConnectionString, Token Secrets, Loggining, Host COnfig, Redis COnfig, etc. 
+	- Startup.cs
+		- The class that is used to provide, application Startup configuration******
+	- Program.cs
+		- Class fot Hosting Initialization 
+- Dependenceis
+	- Microsoft.NetCore.App
+		- .NET Core Libreries
+	- Microsoft.AspNetCore.App
+		- ASP.NET Core Eco-System
+
+# Programming With ASP.NET Core 5
+1. Use EF Core to Generate DAL
+2. Defualt Repositry Pattern to create Business Services
+3. If using MVC then define Action Filters
+	- Exception, Result (Optional)
+4. Use Tag Helpers for Views 
+	- Standard Tag Helpers
+	- Create Custom Tag Helpers
+5. ASP.NET Core Request Processing
+6. Identity
+	- Individual Identities for User Based Security
+	- Role BAsed Security
+		- Customize the Identity Pages
+	- Policy BAsed Authorization
+7. APIs
+	- Parameter Binders
+	- HTTP Method Mappers
+	- Open API Ids
+	- Middlewares	
+	- Swagger Service
+	- Proxy Class for Client
+	- Token Based Authentication
+8. ASP.NET Core API Request Processing
+9. Blazor
+	- Hosting Model
+		- Server-Side Blazor Apps
+		- Web Assembly
+	- State Management
+	- Lifecycle Hooks
+	- USing Naviugations with ROuting
+	- Custom Components
+	- Templates
+	- Data Binding
+	- Event Binding
+	- Razor Veiw Component
+10. Microsoft Identity Platform
+	- Secure ASP.Net Core App
+	- Secure ASP.NET Core API
+	- Secure Blazor Apps
+11. Deployment
 
 
 # Tasks
