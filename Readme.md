@@ -240,3 +240,58 @@ Day 5 : 23-Ju;y-2021,Conceptual Session on ASP.NET COre 5
 Day 6: 
 1. Modify the ASP.NET Core 5 app by adding Edit,Delete methods in DepartmentController alomg with Views. Add EmployeeController and in Create View of Employee, show DropDown for DeptNo that shows List of DeptName HIMT: Use asp-items for shoing List of Department on Create view for Employees
 2. Create a Controller that will show Departments and EMployees Table in a Single View. When you select DeptNo from Departments Table, the EMployee Table should show Employees for selected Department 
+
+
+
+
+USE [Company]
+GO
+
+/****** Object:  Table [dbo].[Department]    Script Date: 7/26/2021 12:36:22 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Department](
+	[DeptNo] [int] NOT NULL,
+	[DeptName] [varchar](100) NOT NULL,
+	[Location] [varchar](100) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[DeptNo] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+
+ USE [Company]
+GO
+
+/****** Object:  Table [dbo].[Employee]    Script Date: 7/26/2021 12:36:49 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Employee](
+	[EmpNo] [int] NOT NULL,
+	[EmpName] [varchar](100) NOT NULL,
+	[Designation] [varchar](100) NOT NULL,
+	[Salary] [int] NOT NULL,
+	[DeptNo] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[EmpNo] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Employee]  WITH CHECK ADD FOREIGN KEY([DeptNo])
+REFERENCES [dbo].[Department] ([DeptNo])
+GO
+

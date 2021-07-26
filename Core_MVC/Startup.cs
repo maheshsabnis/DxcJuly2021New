@@ -82,6 +82,7 @@ namespace Core_MVC
 
 			// Register the Custom Services
 			services.AddScoped<IService<Department,int>,DepartmentService>();
+			services.AddScoped<IService<Department, int>, DepartmentService>();
 
 			// The Resource Processing for MVC and API Controllers and MVC Views
 			services.AddControllersWithViews();

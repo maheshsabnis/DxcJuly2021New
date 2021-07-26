@@ -7,42 +7,42 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Core_MVC.Services
 {
-    public class DepartmentService : IService<Department, int>
+    public class EmployeeService : IService<Employee, int>
     {
         private readonly CompanyContext context;
         /// <summary>
         /// Injecting the DbContext in Service 
         /// </summary>
         /// <param name="ctx"></param>
-        public DepartmentService(CompanyContext ctx)
+        public EmployeeService(CompanyContext ctx)
         {
             context = ctx;
         }
 
 
-        public async Task<Department> CreateAsync(Department entity)
+        public async Task<Employee> CreateAsync(Employee entity)
         {
-            var result = await context.Departments.AddAsync(entity);
+            var result = await context.Employees.AddAsync(entity);
             await context.SaveChangesAsync();
             return result.Entity;
         }
 
-        public Task<Department> DeleteAsync(int id)
+        public Task<Employee> DeleteAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Department>> GetAsync()
+        public async Task<IEnumerable<Employee>> GetAsync()
         {
-            return await context.Departments.ToListAsync();
+            return await context.Employees.ToListAsync();
         }
 
-        public async Task<Department> GetAsync(int id)
+        public async Task<Employee> GetAsync(int id)
         {
-            return await context.Departments.FindAsync(id);
+            return await context.Employees.FindAsync(id);
         }
 
-        public Task<Department> UpdateAsync(int id, Department entity)
+        public Task<Employee> UpdateAsync(int id, Employee entity)
         {
             throw new NotImplementedException();
         }
