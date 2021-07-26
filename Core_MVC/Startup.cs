@@ -12,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core_MVC.Models;
+using Core_MVC.Services;
 
 namespace Core_MVC
 {
@@ -50,13 +52,23 @@ namespace Core_MVC
 		// 4. Custom Business Services
 		// 5. RAzor Pages Resources
 		// 6. API Controller Resources
-		// 7. DbContext for the EF Core thatb is connecting to the Application Database Server
+		// 7. DbContext for the EF Core that will be used for connecting to the Application to Database Server
 		public void ConfigureServices(IServiceCollection services)
 		{
 			// the method for registering the DbContext object for Security for the current application
 			services.AddDbContext<ApplicationDbContext>(options =>
 				options.UseSqlServer(
 					Configuration.GetConnectionString("DefaultConnection")));
+
+			// Register the DbCOntext for Accessing the Database for the Application
+			// DbContextOptions: Read the DbContext object (and hence the DbConnection) from
+			// the DI Container and make it ready for Performing Transactions
+			services.AddDbContext<CompanyContext>(options=> {
+				options.UseSqlServer(Configuration.GetConnectionString("AppConnection"));
+			  
+			});
+
+			 
 			// ASP.NET Core 5
 			// The defauilt Action Filter that will be execurted if the database connection failed or any ther
 			// // database error occures. THis will render a default database error page
@@ -67,6 +79,10 @@ namespace Core_MVC
 			// This will use AspNetUser table for User BAsed identity Management 
 			services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
 				.AddEntityFrameworkStores<ApplicationDbContext>();
+
+			// Register the Custom Services
+			services.AddScoped<IService<Department,int>,DepartmentService>();
+
 			// The Resource Processing for MVC and API Controllers and MVC Views
 			services.AddControllersWithViews();
 		}

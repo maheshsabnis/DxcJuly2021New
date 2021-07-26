@@ -131,11 +131,45 @@ Learning .NET 5
 # Programming With ASP.NET Core 5
 1. Use EF Core to Generate DAL
 2. Defualt Repositry Pattern to create Business Services
-3. If using MVC then define Action Filters
+3. If using MVC then define Action Filters on Controller
+    - Controllers
+		- The Request Facilitator of MVC Applications
+		- Listen to the HTTP Request and based on the Request Type (HTTP GET/POST/PUT/DELETE) + Action Name (What is supposed to be executed), the Execution is performed
+			- The 'Controller' is base class for MVC Controller
+				- This class implements IActionFilter Interface to load and execute action filters for MVC COntroller Only for Exception, Logging, Result, etc.
+				- The 'Controller' is responsible to Execute View Resources aka ViewResult, PartialViewResult
+				- The 'Controller' is responsible to execute Action Method and decide the Response Type based on Action Merthod
+					- View, Json
+				- The Controller class can maintain State of the data across actoin Methods of Same controller or action methods of Across Controllers, using 'TempData'. The ViewData and ViewBag are used to maintain state across the Action Method and View  
+		- The ControllerBase class is the Common BAse class for APIs and MVC Controllers
+			- This class managed
+				- Routing, Model Validations, Identity of User, HttpContext to Manage Request and Response
+		- IActionResult, the common contract interface for Managing the HttpResponse from the ASP.NET Core Apps
+			- ViewResult,JsonResult, PartialViewResult, ReditectToActionResult
+			- FileResult, 
+			- Results for APIs, OkResult, ObObjectResult, NotFoundResult, BadRequestResult, etc.
 	- Exception, Result (Optional)
 4. Use Tag Helpers for Views 
+	- They are the Interactive UI scaffolded by MVC in ASP.NET Core
+		- View is Derived from RazorViewPage<TModel> class
+			- TModel is a Model class passed to the View while scaffolding it (aka generating it)
+				- Type of TModel is depending on the ViewTemplate and Model class passed to the Template
+				- If Template is List, then TModel will be IEnumetable[Model] class
+				- If Template is create, then TModel will be an empty Model class
+				- If Template is Edit, then TModel will be the Model with Valued to be edited
+				- If Template is Delete, the TModel will be the Model with values to be deleted
+				- If Template is Details, the TModel will be the Readonly Model with values to be viewed
+				- If Template is Empty(With Model), the TModel will be the Model with values to be shown onn View
+			- Each view has the 'Model' property of the type TModel
 	- Standard Tag Helpers
-	- Create Custom Tag Helpers
+		- They are the Pre-Compiled HTML Attributes used to set the Execution Behavior of HTML elements when the View is rendered in Browser	   
+			- asp-controller, generate HTTP Request for the Controller
+			- asp-action, generate HTTP reques for Action Method
+			- asp-for, bind the scalar property of teh Model classs with HTML Elements
+			- asp-items, genetrate an HTML element by iterating over the collection property from Model class
+			- asp-validation-for,executes server-side Model validation using JavaScript code on the client (browser)
+			- asp-route for roputing
+	- Create Custom Tag Helper
 5. ASP.NET Core Request Processing
 6. Identity
 	- Individual Identities for User Based Security
@@ -202,3 +236,7 @@ Day 4: 22-july-2021
 
 1. Create a StoreProcedure for Inserting Employee information in Employee table. THis Stored Procedure will have all columns of Employee Table as input parameters. Perform the Insert operations using EF Core Database First Approach. The Stored Procedure will retuen the Count of the Number of records in EMployee Table based on the DeptNo.
 2. Take an experience of Code-First Approach with Many-to-Many relations acros tables as per the classes of your choice.
+Day 5 : 23-Ju;y-2021,Conceptual Session on ASP.NET COre 5
+Day 6: 
+1. Modify the ASP.NET Core 5 app by adding Edit,Delete methods in DepartmentController alomg with Views. Add EmployeeController and in Create View of Employee, show DropDown for DeptNo that shows List of DeptName HIMT: Use asp-items for shoing List of Department on Create view for Employees
+2. Create a Controller that will show Departments and EMployees Table in a Single View. When you select DeptNo from Departments Table, the EMployee Table should show Employees for selected Department 
