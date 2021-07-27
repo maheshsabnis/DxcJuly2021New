@@ -5,9 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core_MVC.Models;
 using Core_MVC.Services;
-
+using Core_MVC.CustomFilters;
 namespace Core_MVC.Controllers
 {
+ //   [RequestLogFilter]
     public class DepartmentController : Controller
     {
         private readonly IService<Department, int> deptServ;
@@ -45,17 +46,30 @@ namespace Core_MVC.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Department dept)
         {
-            // Check for Model Validation, the Postefd data from Form
-            if (ModelState.IsValid)
-            {
-                var res = await deptServ.CreateAsync(dept);
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                // stey on same view with Error Pages
-                return View(dept);
-            }
+            //try
+            //{
+                // Check for Model Validation, the Postefd data from Form
+                if (ModelState.IsValid)
+                {
+                    if (dept.DeptNo < 0) throw new Exception("DeptNo cannot be -ve");
+                    var res = await deptServ.CreateAsync(dept);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    // stey on same view with Error Pages
+                    return View(dept);
+                 }
+            //}
+            //catch (Exception ex)
+            //{
+            //    return View("Error", new ErrorViewModel()
+            //    {
+            //         ControllerName = this.RouteData.Values["controller"].ToString(),
+            //          ActionName = this.RouteData.Values["action"].ToString(),
+            //          ErrorMessage = ex.Message
+            //    });
+            //}
         }
         /// <summary>
         /// Record to be edited

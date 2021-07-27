@@ -166,7 +166,9 @@ Learning .NET 5
 			- asp-controller, generate HTTP Request for the Controller
 			- asp-action, generate HTTP reques for Action Method
 			- asp-for, bind the scalar property of teh Model classs with HTML Elements
-			- asp-items, genetrate an HTML element by iterating over the collection property from Model class
+			- asp-items, generate  HTML elements by iterating over the collection property from Model class
+				- asp-items="IEnumerable"
+					- Microsoft.AspNetCore.Mvc.Rendering.SelectList
 			- asp-validation-for,executes server-side Model validation using JavaScript code on the client (browser)
 			- asp-route for roputing
 	- Create Custom Tag Helper
@@ -238,10 +240,12 @@ Day 4: 22-july-2021
 2. Take an experience of Code-First Approach with Many-to-Many relations acros tables as per the classes of your choice.
 Day 5 : 23-Ju;y-2021,Conceptual Session on ASP.NET COre 5
 Day 6: 
-1. Modify the ASP.NET Core 5 app by adding Edit,Delete methods in DepartmentController alomg with Views. Add EmployeeController and in Create View of Employee, show DropDown for DeptNo that shows List of DeptName HIMT: Use asp-items for shoing List of Department on Create view for Employees
+1. Modify the ASP.NET Core 5 app by adding Edit,Delete methods in DepartmentController alomg with Views. Add EmployeeController and in Create View of Employee, show DropDown for DeptNo that shows List of DeptName HIML Use asp-items for shoing List of Department on Create view for Employees
 2. Create a Controller that will show Departments and EMployees Table in a Single View. When you select DeptNo from Departments Table, the EMployee Table should show Employees for selected Department 
 
-
+Day 7:
+1. Modify the Custom Exception Filter to Log Exceptions with ControllerName, ActioName and Excception Mressage in Database table called RequetLog which is having columns as ReuqestId, COntrollerName, ActionName, RequestDateTime, ErrorMessage
+	- Use EF Core Approach to perform this Database Operations
 
 
 USE [Company]

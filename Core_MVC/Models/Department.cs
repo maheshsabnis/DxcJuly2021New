@@ -12,7 +12,7 @@ namespace Core_MVC.Models
             Employees = new HashSet<Employee>();
         }
         [Required(ErrorMessage ="DeptNo is Must")]
-        [NumericNonNegative]
+      //  [NumericNonNegative]
         public int DeptNo { get; set; }
         [Required(ErrorMessage = "DeptName is Must")]
         public string DeptName { get; set; }

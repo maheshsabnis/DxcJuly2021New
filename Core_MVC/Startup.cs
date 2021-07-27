@@ -14,7 +14,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core_MVC.Models;
 using Core_MVC.Services;
-
+using Core_MVC.CustomFilters;
 namespace Core_MVC
 {
 	/// <summary>
@@ -82,10 +82,16 @@ namespace Core_MVC
 
 			// Register the Custom Services
 			services.AddScoped<IService<Department,int>,DepartmentService>();
-			services.AddScoped<IService<Department, int>, DepartmentService>();
+			services.AddScoped<IService<Employee, int>, EmployeeService>();
 
 			// The Resource Processing for MVC and API Controllers and MVC Views
-			services.AddControllersWithViews();
+			// Applying the Action Filter Globally
+			services.AddControllersWithViews(options=> {
+				options.Filters.Add(new RequestLogFilterAttribute());
+				// Resolve the IModelMetadataProvider
+				options.Filters.Add(typeof(CustomExceptionFilterAttribute));
+			   
+			});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
