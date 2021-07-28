@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using Core_MVC.Models;
 using Core_MVC.Services;
 using Core_MVC.CustomFilters;
+using Microsoft.AspNetCore.Http;
+using System.Text.Json;
+using Core_MVC.CustomSessionExtensions;
 namespace Core_MVC.Controllers
 {
  //   [RequestLogFilter]
@@ -98,6 +101,32 @@ namespace Core_MVC.Controllers
                 // stey on same view with Error Pages
                 return View(dept);
             }
+        }
+
+
+        public async Task<IActionResult> Details(int id)
+        {
+            // plese import mMicrosoft.AspNetCore.Http for extended session methods
+            HttpContext.Session.SetInt32("DeptNo", id);
+            var dept = await deptServ.GetAsync(id);
+            // HttpContext.Session.SetString("Dept", JsonSerializer.Serialize(dept));
+            HttpContext.Session.SetObject<Department>("Dept", dept);
+            return RedirectToAction("Index", "Employee");
+        }
+
+
+        public  IActionResult ShowDetails(int id)
+        {
+            // TempData, is used only across two action methods of same or different controller
+            // internal;ly it uses the session state
+            // once the value is read from the TempData the Key will be removed from the TempData along with value
+            TempData["DeptNo"] = id;
+            return RedirectToAction("Index", "Employee");
+        }
+
+        public IActionResult ListDepts()
+        {
+            return View();
         }
 
     }

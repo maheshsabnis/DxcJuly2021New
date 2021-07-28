@@ -149,6 +149,13 @@ Learning .NET 5
 			- FileResult, 
 			- Results for APIs, OkResult, ObObjectResult, NotFoundResult, BadRequestResult, etc.
 	- Exception, Result (Optional)
+	- The View can directly be injected using the dependencies
+		- @inject directive, used to resolve and load the dependency type on view and execute it
+				- Load View
+				- Execute Logic on View
+				- Generate Data
+				- Pre-Render the HTML based on Data3
+				- Send the HTML Serialied response to Client along with Data
 4. Use Tag Helpers for Views 
 	- They are the Interactive UI scaffolded by MVC in ASP.NET Core
 		- View is Derived from RazorViewPage<TModel> class
@@ -243,9 +250,12 @@ Day 6:
 1. Modify the ASP.NET Core 5 app by adding Edit,Delete methods in DepartmentController alomg with Views. Add EmployeeController and in Create View of Employee, show DropDown for DeptNo that shows List of DeptName HIML Use asp-items for shoing List of Department on Create view for Employees
 2. Create a Controller that will show Departments and EMployees Table in a Single View. When you select DeptNo from Departments Table, the EMployee Table should show Employees for selected Department 
 
-Day 7:
+Day 7: Date: 27-july-2021
 1. Modify the Custom Exception Filter to Log Exceptions with ControllerName, ActioName and Excception Mressage in Database table called RequetLog which is having columns as ReuqestId, COntrollerName, ActionName, RequestDateTime, ErrorMessage
 	- Use EF Core Approach to perform this Database Operations
+
+Day 8: Date:28-july-2021
+1. When a View result for any exception based on action method, the error page will be displayed. When we comeback from erro page to the view that has thrown exception, the view should show the original data and the entry caused the error, must show error message beside it. 
 
 
 USE [Company]

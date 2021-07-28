@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using Core_MVC.Models;
 using Core_MVC.Services;
 using Microsoft.AspNetCore.Mvc.Rendering;
-
+using Microsoft.AspNetCore.Http;
+using System.Text.Json;
+using Core_MVC.CustomSessionExtensions;
 namespace Core_MVC.Controllers
 {
     public class EmployeeController : Controller
@@ -23,12 +25,32 @@ namespace Core_MVC.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var res = await empServ.GetAsync();
-            return View(res);
+            // show Employees for the selected DeptNo
+            // var deptNo = HttpContext.Session.GetInt32("DeptNo");
+            //  var dept =  JsonSerializer.Deserialize<Department>(HttpContext.Session.GetString("Dept"));
+            // var dept = HttpContext.Session.GetObject<Department>("Dept");
+            var deptNo = Convert.ToInt32(TempData["DeptNo"]);
+            if (deptNo == 0)
+            {
+                var res = await empServ.GetAsync();
+                TempData.Keep(); // Ask the COntroller and Hence the HttpContext to maintain the State of the Tempdate. TempData.Keep(); will maintain state for all keys 
+                // TempData.Keep("[Key]"); will maintain state for only the specific key
+                return View(res);
+            }
+            else
+            {
+                TempData.Keep();
+                var res = await empServ.GetAsync();
+                var emps = res.Where(e => e.DeptNo == deptNo).ToList();
+                ViewBag.DeptNo = deptNo;
+                return View(emps);
+            }
+         
         }
 
         public async Task<IActionResult> Create()
         {
+            var val = Convert.ToInt32(TempData["DeptNo"]);
             var emp = new Employee();
             ViewBag.Name = "The Employee Create View";
             // get collection of Depratments
@@ -45,6 +67,12 @@ namespace Core_MVC.Controllers
                 return RedirectToAction("Index");
             }
             return View(employee);
+        }
+        public async Task<IActionResult> IndexTag()
+        {
+            var res = await empServ.GetAsync();
+             
+            return View(res);
         }
     }
 }

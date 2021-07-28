@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Core_MVC.Models.Employee>
+
+@{
+    ViewData["Title"] = "IndexTag";
+}
+
+<h1>Using Custom HTML Helper to Show List of Data</h1>
+<table data-source-model="@Model"></table>
+ 

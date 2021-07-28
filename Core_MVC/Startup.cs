@@ -84,6 +84,14 @@ namespace Core_MVC
 			services.AddScoped<IService<Department,int>,DepartmentService>();
 			services.AddScoped<IService<Employee, int>, EmployeeService>();
 
+			// Initialize the Session State
+			services.AddDistributedMemoryCache(); // Enable the Distributed Memory cachhe for the Session
+			services.AddSession(options=> {
+				options.IdleTimeout = TimeSpan.FromMinutes(20); // The Sesison Timeout
+			});
+
+
+
 			// The Resource Processing for MVC and API Controllers and MVC Views
 			// Applying the Action Filter Globally
 			services.AddControllersWithViews(options=> {
@@ -115,7 +123,9 @@ namespace Core_MVC
 			app.UseStaticFiles();
 
 			app.UseRouting();
-
+			// Comnfoigure the HttpContext to use the Session Middleware so that
+			// Read/Write operations on Cache for Session State will be carriedout
+			app.UseSession();
 			app.UseAuthentication();
 			app.UseAuthorization();
 
