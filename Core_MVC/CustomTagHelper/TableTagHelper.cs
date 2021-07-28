@@ -19,6 +19,9 @@ namespace Core_MVC.CustomTagHelper
         /// <summary>
         /// ModelExpression: The Lambda Expression or the data to be passed to Helper
         /// </summary>
+        /// []
+        /// 
+        [HtmlAttributeName("source-model")]
         public ModelExpression DataModel { get; set; }
 
         /// <summary>
