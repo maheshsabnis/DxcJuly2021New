@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/jquery-3.6.0.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#btn").on('click', function () {
+
+                $.ajax({
+                    url: "http://localhost:64061/api/Department",
+                    type:"GET"
+                }).done(function (resp) {
+                    alert(JSON.stringify(resp));
+
+                }).fail(function (error) {
+                    alert('Error ' + error)
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="button" id="btn" value="Call"/>
+</body>
+</html>

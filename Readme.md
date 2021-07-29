@@ -130,6 +130,11 @@ Learning .NET 5
 
 # Programming With ASP.NET Core 5
 1. Use EF Core to Generate DAL
+	- dotnet add package Microsoft.EntityFrameworkCore -v 5.0.8
+	- dotnet add package Microsoft.EntityFrameworkCore.SqlServer -v 5.0.8
+	- dotnet add package Microsoft.EntityFrameworkCore.Relational -v 5.0.8
+	- dotnet add package Microsoft.EntityFrameworkCore.Tools -v 5.0.8
+	- dotnet add package Microsoft.EntityFrameworkCore.Design -v 5.0.8
 2. Defualt Repositry Pattern to create Business Services
 3. If using MVC then define Action Filters on Controller
     - Controllers
@@ -186,9 +191,55 @@ Learning .NET 5
 		- Customize the Identity Pages
 	- Policy BAsed Authorization
 7. APIs
-	- Parameter Binders
+	- The 'ControllerBase' is base class for API Controller
+		- Request Processing Object Models
+			- HttpRequest, HttpResponse, HttpContext and RouteData
+		- Security
+			- ClaimsPrincipal Object to Handle Secure Calls to API
+		- Http Status Code Response Methods
+			- OkResult, OkObjectResult, NotFoundResult, ConflictResult, etc.
+	- ApiControllerAttribute class applied on API Controller class
+		- Used to Map Http Requests to HTTP Action Methods based on Http request Type e.g. Get return type will mapp to action method with HttpGet Attribute applied on it.
+		- For Http Post and Http Put request, the JSON data from Http Request Body will be mapped with CLR Object
+	- Parameter Binders 
 	- HTTP Method Mappers
-	- Open API Ids
+		- The class to map the Http Request to Currsponding method of API Controller
+``` csharp
+//
+    // Summary:
+    //     Identifies an action that supports the HTTP GET method.
+    public class HttpGetAttribute : HttpMethodAttribute
+    {
+        //
+        // Summary:
+        //     Creates a new Microsoft.AspNetCore.Mvc.HttpGetAttribute.
+        public HttpGetAttribute();
+        //
+        // Summary:
+        //     Creates a new Microsoft.AspNetCore.Mvc.HttpGetAttribute with the given route
+        //     template.
+        //
+        // Parameters:
+        //   template:
+        //     The route template. May not be null.
+        public HttpGetAttribute(string template);
+    }
+```
+
+	- The ' HttpGetAttribute(string template);', the template means the OpenAPI method name template, that will be used by the Route and MapControllers() middlewares to map the request to action method
+	- API Design Challanges
+		- What if the Browser CLient tries to Access the API?
+			- The Browser client from the different Domain with receive the CORS error
+			- To rectify this error add the CORS policy service in COmfogureServices() method pof Startup class
+			- Add the CORS Middleware in COmnfigure() method before the routing Middleware
+		- What if the ApiController Attribute is removed from API Controller class?
+			- TO make Post and Put Request from Client app that is posting data send in Http Request, use the Model Parameter Binders in Post and Put Methods 
+		- What if the client is trying to make post request using QueryString, FormData, Route values?
+			- The FormQuery Model Parameter binder, that is used to map the QuerySrting Data with CLR Object
+			- The FromRoute Model Parameter binder, that is used to map the Route Value to CLR object
+	- OpenAPI Ids
+		- What if the Managed cline wants to access API methods for HTTP Calls using Service Proxy Stub? OR eventthe TypeScript clientts wants to access the API with Simple Coding standard?
+		- The OpsnAPI Specification 3.0 allows developers to create a simple API Documentation by configuring HTTP Merthods names as developer friendly methods 
 	- Middlewares	
 	- Swagger Service
 	- Proxy Class for Client
@@ -256,6 +307,12 @@ Day 7: Date: 27-july-2021
 
 Day 8: Date:28-july-2021
 1. When a View result for any exception based on action method, the error page will be displayed. When we comeback from erro page to the view that has thrown exception, the view should show the original data and the entry caused the error, must show error message beside it. 
+
+Day 9: Date 39-July-2021
+1. Create a SearchAPI that will contain a method which will provided the Listing of EMployees based on DeptName
+2. Create a API that will contain a Post method to Create Department and EMployees with one-to-Many relations, means that for a single department multiple Employees will be created. This Post method will accept one deprtment object and multiple Employees for the dfeepartment.  
+ Post(Dept,List<Employee>)
+
 
 
 USE [Company]
