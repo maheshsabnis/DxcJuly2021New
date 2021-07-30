@@ -11,7 +11,10 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+ 
+using Core_API.Services;
 using System.Threading.Tasks;
+using Core_API.CustomMiddlewares;
 
 namespace Core_API
 {
@@ -37,6 +40,11 @@ namespace Core_API
                             .AllowAnyMethod()
                             .AllowAnyHeader());
             });
+
+
+            services.AddScoped<IService<Department, int>, DepartmentService>();
+            services.AddScoped<IService<Employee, int>, EmployeeService>();
+
 
             // The Request will be accepted for API Controllers
             // Adding the JSON Serialization by supressing the default Serialization Type
@@ -72,6 +80,10 @@ namespace Core_API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            // Register all Custom Middlewares
+            app.UseCustomExceptionMiddleware();
+
 
             app.UseEndpoints(endpoints =>
             {

@@ -240,7 +240,18 @@ Learning .NET 5
 	- OpenAPI Ids
 		- What if the Managed cline wants to access API methods for HTTP Calls using Service Proxy Stub? OR eventthe TypeScript clientts wants to access the API with Simple Coding standard?
 		- The OpsnAPI Specification 3.0 allows developers to create a simple API Documentation by configuring HTTP Merthods names as developer friendly methods 
+    - Managing Responses from the API
+		- Validation of Models
+		- Process BAsed Exceptions
+			- Implement the custom Middleware that will be added in the Http Pipeline
+		- Security Implemnation
+		- Managing the Model Design for performing Read/Write Operations
 	- Middlewares	
+		- Class that is constructor injected with 'RequestDelegate' delegate object
+			- This delegate invokes a method that is accepting the input parameter as 'HttpContext'
+			- InvokeAsync(HttpContext context) {  /* Logic for Middleware */}
+		- Create an extension class
+			- This class will register a middleware class in the Pipline using IApplicationBuilder
 	- Swagger Service
 	- Proxy Class for Client
 	- Token Based Authentication
@@ -308,11 +319,21 @@ Day 7: Date: 27-july-2021
 Day 8: Date:28-july-2021
 1. When a View result for any exception based on action method, the error page will be displayed. When we comeback from erro page to the view that has thrown exception, the view should show the original data and the entry caused the error, must show error message beside it. 
 
-Day 9: Date 39-July-2021
+Day 9: Date 29-July-2021
 1. Create a SearchAPI that will contain a method which will provided the Listing of EMployees based on DeptName
 2. Create a API that will contain a Post method to Create Department and EMployees with one-to-Many relations, means that for a single department multiple Employees will be created. This Post method will accept one deprtment object and multiple Employees for the dfeepartment.  
  Post(Dept,List<Employee>)
 
+Day 10: Date : 30-July-2021
+1. Create a Middleware that will listen to excepitons thrown by the API COntroller's Action Method. The Middleware will perform the Following
+	- Its should listen to different exceptions 
+		- DatabaseException
+		- Application Levele excepotions e.g. Custom Exceptions.
+	- The Status code Must be different for different exception
+		- E.g. If DB Exception, then for Insert Fail, 600, Update Fail, 601, Unique Fail, 602, Not Found, 603
+	- The Exception Message must containe the Following Infromation in Response
+		- Decorated Exception Message (Hide the actual Exception), Status Code, Data Value that caused exception
+	- The Middleware mujst log the Exception details in Database 		
 
 
 USE [Company]
