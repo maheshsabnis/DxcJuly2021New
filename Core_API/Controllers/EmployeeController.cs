@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core_API.Models;
 using Core_API.Services;
+using SharedLib;
 
 namespace Core_API.Controllers
 {

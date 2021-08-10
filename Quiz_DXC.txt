@@ -1,0 +1,93 @@
+1. Which tag must be added in Project file for Single File Publish?
+
+  <PublishSingleFile>true</PublishSingleFile>  
+
+2. What is the Type Name for the Tuple Type?
+	System.ValueTuple
+	
+
+3. What is the use of ServiceDescriptor class in ASP.NET Core?
+
+	
+
+4. Which contract interface reads the appsettings.json file keys?
+
+	IConfiguration
+
+5. Which method is used to register the type as statefull in DI Container?
+	
+	AddSession()
+	AddDistributedMemoryCache()
+
+6. What is the base class used to define the custom filter in ASP.NET Core?
+
+	Attribute
+
+7. Which property of the Controller class is used to validate the model?
+
+	ModelState.isvalid
+
+8. Which tag helper is used to generate HTML elements based on collection passed to it?
+
+	asp-items
+
+9. Which class represent the current HTTP request Context?
+
+	ControllerBase
+
+10. Which HTTP module is used by IIS to redirect HTTP requests to the ASP.NET Core applications?
+
+	HttpRequest
+
+11. Which command is used to generate Entity Classes in EF Core in DB FIrst Approach?
+
+  dotnet ef dbcontext scaffold "<connectionString>" Microsoft.EntityFrameworkCore.SqlServer -o <folder_to_contain_model_classes> -t <tables_to_map>
+
+
+12. Which command is used to install NuGet Packages using dotnet CLI?
+
+		dotnet add package <packageName>
+
+13. Which Tag Helper is used to perform Model binding?
+
+	asp-for
+
+14. Which Actrion result type is used to redirect to the action method of the different controller?
+
+		ReditectToActionResult
+
+15. What is the use of the 'Model' proeprty of RazorView class in ASP.NET Core?
+
+		
+
+16. What is the use of wwwroot folder in ASP.NET Core Project?
+
+	it is used to store all clientside files like javascript files,css files etc.
+
+18. Which extension method is used to register the DbContext class in DI Container in ASP.NET Core?
+
+	services.AddDbContext<dbcontext_class>
+
+19. What is the meaning of AddScopped<T>() method in ASP.NET Core?
+
+	It is used to register the services
+
+20. Which method of the DbContext class is used to commit transaction?
+21. Which command of dotnet CLI is used to update database in Code-First approach?
+
+	dotnet ef database update <fully_qualified_dbcontext_class>
+
+22. Which attribute must be applied on the public string property of entity class to define maximum length constiant?
+
+	[MaxLength]
+
+23. Which enumeration is used to define the service registration lifetime for types in DI Container?
+
+	AddTransient 
+
+24. Which command is used to generations migrations in DbFirst approach?
+
+	dotnet ef migrations add FirstMigration -c <full_qualified_DbContextClass>
+
+25. Which base class is used to create a custom validator in ASP.NET Core?    
+ 

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Core_API.Models;
 using System.Net.Mime;
+using SharedLib;
 
 namespace Core_API.Controllers
 {

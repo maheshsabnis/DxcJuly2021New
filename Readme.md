@@ -41,7 +41,30 @@ Learning .NET 5
 	- API Proxy COde
 	- Microsoft Identity Platform (.NET 5)
 		- User / Role Based Secueity with Policy BAsed Authentication
+			- Microsoft.AspNetCore.Identity.EntityFramneworkCore
+				- An integration between ASP.NET COre Identity and EF Core
+					- IdentityUser
+						- Used to Define Schema for USer in Database, AspNetUsers Table
+						- Id, Name, Email, PasswordHash, etc.
+					- IdentityRole
+						- Used to define sschema for Application Roles, AspNetRoles Table  
+					- IdentityClaims, IdentityTokens, etc
+				- IdentityDbContext
+					- Derived from IdentituDbContext<IdentityUser,IdentityRole, IdentityClaims, IdentityTokens> 
+						- This class is used to to generate Identity database using EF Core Code-First Migration
+				- UserManager<IdentityUser>
+					- USer Management
+						- CReate, Update, Delete, Read USers
+						- Assign Role to / Roles (.NET Core) to USer
+				- RoleManager<IdentityRole>
+					- Role Management CRUD
+				- SignInManasger<IdentityUser>
+					- Mange the USer SignIn using USer+Password 
+			- Microsoft.AspNetCore.Identity.UI
+				- The Package that represets the Razor Library that contains pages for Security / Identity
+	`		- The AddAuthorization() Service method will allo to define Authriozation Policies for the Application
 		- Azure AD Integration (Recommended if app is deployed on Azure)
+
 			- OpenIdConnect
 		- Federated Security for Local / On-Premised AD
 	- Host BUilder Modification
@@ -334,6 +357,11 @@ Day 10: Date : 30-July-2021
 	- The Exception Message must containe the Following Infromation in Response
 		- Decorated Exception Message (Hide the actual Exception), Status Code, Data Value that caused exception
 	- The Middleware mujst log the Exception details in Database 		
+
+
+Day 17: Date: 10-Aug-2021
+1. When the Application Starts, create a Administrator Role User using Code.The RoleController and RoleUSerManagerCOntroller can be accessed using the Administrator role only
+	- User NAme: admin@myapp.com, Password:P@ssw0rd-1235
 
 
 USE [Company]

@@ -15,6 +15,10 @@ using System.Linq;
 using Core_API.Services;
 using System.Threading.Tasks;
 using Core_API.CustomMiddlewares;
+using SharedLib;
+using System.IO;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.FileProviders;
 
 namespace Core_API
 {
@@ -76,6 +80,17 @@ namespace Core_API
 
             //Adding the CORS Middleware
             app.UseCors("cors");
+            // Enable teh Static File Middleware so that the Host knows that FileOperations performed
+            // Step 1: ENable the Default Staic File Middleware
+            app.UseStaticFiles();
+            // Step 2: COnfigure the Physical Server Folder to the Static FIle Middleware
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                // PhysicalFileProvider: Will COnfigure the Storage with the API APp
+                FileProvider = new PhysicalFileProvider(
+                  Path.Combine(Directory.GetCurrentDirectory(), @"Storage")),
+                  RequestPath = new PathString("/Storage")  // The Path where the Read/Write Operations will takes Place
+            });
 
             app.UseRouting();
 
