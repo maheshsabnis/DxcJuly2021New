@@ -45,7 +45,8 @@ namespace Core_App_Security
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
 
             // AddIdentity, this will be used for User Management as well as Role Management 
-            services.AddIdentity<IdentityUser,IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<IdentityUser,IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultUI();
 
 
             // Add the Authrization Service to Support Policies
