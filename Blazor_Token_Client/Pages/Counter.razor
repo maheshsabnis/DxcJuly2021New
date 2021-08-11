@@ -1,0 +1,78 @@
+﻿@page "/counter"
+@using System.Text.Json
+@using ShredModels
+@inject HttpClient client
+
+<h1>Call To Secure API</h1>
+
+
+
+<button class="btn btn-primary" @onclick="RegisterUser">Register User</button>
+<hr />
+<button class="btn btn-primary" @onclick="AuthUser">Auth User</button>
+<hr />
+<button class="btn btn-primary" @onclick="GetData">Get Data</button>
+<hr />
+<div class="container">
+    <strong>
+        Received Response = @responseData.Message
+    </strong>
+</div>
+
+<hr />
+<div class="container">
+    <strong>
+        Received JSON Data = @data
+    </strong>
+</div>
+
+@code {
+
+    RegisterUser userReg;
+    LoginUser userAuth;
+    string data;
+    ResponseData responseData;
+
+        protected override void OnInitialized()
+        {
+        responseData = new ResponseData();
+            base.OnInitialized();
+        }
+
+        private async Task RegisterUser()
+    {
+        userReg = new RegisterUser()
+        {
+            Email = "u2@user.com",
+            Password = "P@ssw0rd_",
+            ConfirmPassword = "P@ssw0rd_"
+        };
+
+        var response = await client.PostAsJsonAsync<RegisterUser>("https://localhost:44381/api/Security/Register", userReg);
+
+
+        responseData = JsonSerializer.Deserialize<ResponseData>(await response.Content.ReadAsStringAsync());
+    }
+
+    private async Task AuthUser()
+    {
+        userAuth = new LoginUser()
+        {
+            UserName = "u2@user.com",
+            Password = "P@ssw0rd_"
+
+        };
+
+        var response = await client.PostAsJsonAsync<LoginUser>("https://localhost:44381/api/Security/Auth", userAuth);
+        // receive the token
+        responseData = JsonSerializer.Deserialize<ResponseData>(await response.Content.ReadAsStringAsync());
+    }
+
+    private async Task GetData()
+    {
+        // set the header value
+        client.DefaultRequestHeaders.Add("Authorization", $"Bearer {responseData.Message}");
+        // make the calls and receive the JSON Data
+        data = await client.GetStringAsync("https://localhost:44381/Data");
+    }
+}

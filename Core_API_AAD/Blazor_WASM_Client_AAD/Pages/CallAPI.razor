@@ -1,0 +1,42 @@
+﻿@page "/callapi"
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration configuration
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@inject IAccessTokenProvider TokenProvider
+@inject HttpClient client;
+
+<h3>Call API</h3>
+<button @onclick="GetData">Call Secure API</button>
+<hr />
+<div class="container">
+    <strong>
+        Received Data: @response
+    </strong>
+</div>
+@code {
+    private string response;
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+    }
+
+    private async Task GetData()
+    {
+
+        var tokenResult = await TokenProvider.RequestAccessToken(
+              new AccessTokenRequestOptions()
+              {
+                  Scopes = new[] { configuration["ApiConfig:AccessToken"] }
+              }
+            );
+        //  var apiToken = configuration["ApiConfig:AccessToken"];
+        if (tokenResult.TryGetToken(out var token))
+        {
+            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {token.Value}");
+            // https://localhost:44351/WeatherForecast
+            response = await client.GetStringAsync("https://localhost:44351/Data");
+        }
+
+
+    }
+}

@@ -63,6 +63,28 @@ Learning .NET 5
 			- Microsoft.AspNetCore.Identity.UI
 				- The Package that represets the Razor Library that contains pages for Security / Identity
 	`		- The AddAuthorization() Service method will allo to define Authriozation Policies for the Application
+		- JSON Web Tokens
+			- 3 Sections
+				- Header
+					- COntains the Encyp Algorithm
+						- HMac/MD5/SHA
+				- Payload
+					- Data for Identity
+						- Claims for Identity Management
+							- UserNAme / Email
+							- Role NAme
+							- USerNAme + Role Name
+				- Signeture
+					- Provide The Identity Verification
+					- Secret Code to Establish Trust
+			- Implementation
+				- USe Microsoft ASP.NET Core Identity
+					- EF COre for Identity to Generate Database
+				- USe JWTBearer PAckage
+					- Microsoft.AspNetCore.Authentication.jwtBearer
+						- Provide Schema for AUthentication by Token Description to API App
+				- System.IdentityModel.Token.jwt
+					- Generate Token
 		- Azure AD Integration (Recommended if app is deployed on Azure)
 
 			- OpenIdConnect

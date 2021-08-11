@@ -32,7 +32,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CS_API_Client", "CS_API_Cli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebForm_Client", "WebForm_Client\WebForm_Client.csproj", "{3C88B437-8A13-48D0-B9DD-1C2F31D2E961}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core_App_Security", "Core_App_Security\Core_App_Security.csproj", "{38A1F6B8-7580-466A-8A51-F372ACEA435B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core_App_Security", "Core_App_Security\Core_App_Security.csproj", "{0B91EE84-BDE4-4770-B64D-1AEB56315BDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -88,10 +88,10 @@ Global
 		{3C88B437-8A13-48D0-B9DD-1C2F31D2E961}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C88B437-8A13-48D0-B9DD-1C2F31D2E961}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C88B437-8A13-48D0-B9DD-1C2F31D2E961}.Release|Any CPU.Build.0 = Release|Any CPU
-		{38A1F6B8-7580-466A-8A51-F372ACEA435B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{38A1F6B8-7580-466A-8A51-F372ACEA435B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{38A1F6B8-7580-466A-8A51-F372ACEA435B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{38A1F6B8-7580-466A-8A51-F372ACEA435B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B91EE84-BDE4-4770-B64D-1AEB56315BDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B91EE84-BDE4-4770-B64D-1AEB56315BDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B91EE84-BDE4-4770-B64D-1AEB56315BDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B91EE84-BDE4-4770-B64D-1AEB56315BDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
